@@ -23,6 +23,22 @@ used to connect to the repo and perform `apt` commands against it:
 docker exec -ti aptlocal_repo bash
 ```
 
+convenience
+-----------
+
+```bash
+"make help" - list commands
+"make run" - docker-compose up
+"make ssh_repo" - exec bash in the repo container
+"make ssh_demo" - exec bash in the demo container
+```
+
+tests
+-----
+
+deliberately none. the objective of this repo was to demonstrate to a 
+particular individual the very basics of apt repos.
+
 example debs
 ------------
 
@@ -41,3 +57,13 @@ This repo includes two binaries for the sake of demonstration:
                 ├── Packages.gz
                 └── nginx_1.10.3-0ubuntu0.16.04.3_all.deb
 ```
+
+why is this "not for production"?
+---------------------------------
+
+ - `/etc/apt/sources.list` is replaced in its entirety
+ - No authentication
+ - No Release files
+ - No tests
+ - I wrote it in ~20 minutes to show someone the basics
+

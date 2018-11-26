@@ -1,0 +1,20 @@
+version: "3"
+services:
+  repo:
+    container_name: aptlocal_repo
+    build:
+      dockerfile: ./Dockerfile.repo
+      context: .
+    volumes:
+      - ./debs:/debs/
+    ports:
+      - 8080:80
+  demo:
+    container_name: aptlocal_demo
+    build:
+      dockerfile: ./Dockerfile.demo
+      context: .
+    environment:
+      - DEBREPO=http://repo/debs/
+    links:
+      - repo

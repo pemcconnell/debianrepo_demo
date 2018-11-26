@@ -4,6 +4,15 @@ debian repository demo
 A very simple demonstration of how you can run a simple debian repo using 
 docker. **Absolutely not for production**.
 
+requirements
+------------
+
+```
+ - docker>=18.09.0, build 4d60db4
+ - docker-compose>=1.23.1, build b02f1306
+ - GNU Make>=3.81 (optional)
+ - port :8080 to be free
+```
 
 install / run
 -------------

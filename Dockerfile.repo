@@ -1,0 +1,19 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get install -y \
+      apache2 \
+      curl \
+      vim \
+      dpkg-dev
+
+COPY debs/ /var/www/html/debs
+
+RUN cd /var/www/html/debs/dists/xenial/main/binary-amd64 && \
+  dpkg-scanpackages . | gzip -9c > Packages.gz && \
+  cd /var/www/html/debs/dists/xenial/custom/binary-amd64 && \
+  dpkg-scanpackages . | gzip -9c > Packages.gz
+
+RUN service apache2 stop
+
+CMD ["apachectl", "-D", "FOREGROUND"]

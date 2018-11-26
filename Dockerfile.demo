@@ -1,0 +1,12 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \ 
+    apt-get install -y \
+      curl \
+      vim
+
+COPY ./demo.sh /demo.sh
+
+RUN chmod +x /demo.sh
+
+CMD ["/demo.sh"]
